@@ -32,11 +32,14 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              child: Card(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15)
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 35),
+              child: SizedBox(
+                height: 160,
+                child: Card(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)
+                  ),
                 ),
               ),
             ),
@@ -47,12 +50,50 @@ class _HomePageState extends State<HomePage> {
                 ),
                 itemCount: icons.length,
                 itemBuilder: (context, index) {
-                  return GridElement(iconData: icons[index]);
+                  return GridElement(
+                    index: index,
+                    onPressed: (index) {
+                      print("Hai premuto il grid element $index");
+                    },
+                    iconData: icons[index]
+                  );
                 },
               ),
             )
           ]
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Profile"
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home"
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message),
+            label: "Message"
+          )
+        ],
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.black,
+        onTap: (value) {
+          switch(value){
+            case 0:
+              print("Apri pagina profilo");
+              break;
+            case 1:
+              break;
+            case 2:
+              print("Apri pagina messaggi");
+              break;
+          }
+        },
       ),
     );
   }
