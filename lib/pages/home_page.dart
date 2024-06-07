@@ -1,3 +1,5 @@
+import 'package:domotik_app/pages/lights_page.dart';
+import 'package:domotik_app/pages/messaging_page.dart';
 import 'package:domotik_app/widgets/grid_element.dart';
 import 'package:flutter/material.dart';
 
@@ -53,7 +55,13 @@ class _HomePageState extends State<HomePage> {
                   return GridElement(
                     index: index,
                     onPressed: (index) {
-                      print("Hai premuto il grid element $index");
+                      switch(index) {
+                        case 1:
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => const LightsPage())
+                          );
+                          break;
+                      }
                     },
                     iconData: icons[index]
                   );
@@ -90,7 +98,9 @@ class _HomePageState extends State<HomePage> {
             case 1:
               break;
             case 2:
-              print("Apri pagina messaggi");
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => const MessagingPage())
+              );
               break;
           }
         },
